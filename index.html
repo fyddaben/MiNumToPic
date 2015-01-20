@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xml:lang="zh-CN">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" >
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>test</title>
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <style>
+            body{
+                background-color:#ccc;
+            }
+            .container{
+                position:absolute;
+                left:50%;
+                top:50%;
+                
+            }
+        
+            
+
+        </style>
+    </head> 
+    <body>
+        <div class="container">
+            <div class="J_minum" >
+                234234
+            </div>     
+        </div>
+    <body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" ></script>
+    <script>
+        var numToPic= function(imgurl){
+            var img = new Image();
+            var picnum= 10;
+            var loadFn = function(e){
+                var width= img.width;
+                var height= img.height;
+                var unitWid= Math.round(width/picnum);
+                $(".J_minum").each(function(){
+                    var this_num= $(this).text().trim();
+                    var block_wid= this_num.length*unitWid;
+                    var csspro_parent={
+                        "width":block_wid+"px",
+                        "position":"relative" 
+                    };               
+                    var csspro_child="display:inline-block;width:"+unitWid+"px;height:"+height+"px;background-image:url("+imgurl+");";
+                    $(this).css(csspro_parent); 
+                    console.log(csspro_child);
+                    var num_arr= this_num.split("");
+                    var num_str="";
+                    for(var i in num_arr){
+                        var num = parseInt(num_arr[i]);
+                        var movelen= -num*unitWid;  
+                        var cssnum= "background-position:"+movelen+"px 0px;";
+                        var csspro= csspro_child+cssnum;
+                        var html="<span style='"+csspro+"'></span>"; 
+                        num_str= num_str+html;
+                    }
+
+                    $(this).html(num_str);
+                });
+            }
+            img.onload = loadFn;
+            img.onerror = loadFn;
+            img.src = imgurl; 
+        }
+
+        $(function(){
+            var imgurl="http://page.zgenk.com/images/749979cbafb15117b47fd9ce417e9512.png";
+            numToPic(imgurl);
+        });
+    </script>
+</html>
+
