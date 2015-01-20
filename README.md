@@ -31,7 +31,7 @@
    </div> 
 ```
 
-> 具体调用方法，以及实现逻辑,详见[index.html](https://coding.net/u/fyddaben/p/MiNumToPic/git/blob/master/index.html)
+> 具体调用方法，以及实现逻辑,详见[index.html](https://github.com/fyddaben/MiNumToPic/blob/master/index.html)
 
 ## 效果截图
 
